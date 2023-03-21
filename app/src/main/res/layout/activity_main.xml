@@ -213,7 +213,7 @@
         android:id="@+id/settings_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="@dimen/size_3x"
         android:background="@color/dark_grey"
         android:padding="@dimen/size_5x"
         app:layout_constraintTop_toBottomOf="@id/account_section">
@@ -394,7 +394,7 @@
         android:id="@+id/help_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="@dimen/size_3x"
         android:background="@color/dark_grey"
         android:padding="@dimen/size_5x"
         app:layout_constraintTop_toBottomOf="@id/settings_section">

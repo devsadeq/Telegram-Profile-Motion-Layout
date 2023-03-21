@@ -1,18 +1,482 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <View
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_36x"
+        android:background="@color/medium_grey"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="@dimen/size_0x"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_4x"
+        android:layout_marginTop="@dimen/size_4x"
+        android:contentDescription="@string/back_button"
+        android:src="@drawable/ic_back"
+        android:translationZ="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_6x"
+        android:contentDescription="@string/phone_button"
+        android:src="@drawable/ic_search"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back"
+        app:layout_constraintEnd_toStartOf="@id/iv_more"
+        app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+    <ImageView
+        android:id="@+id/iv_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_6x"
+        android:contentDescription="@string/phone_button"
+        android:src="@drawable/ic_qr"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back"
+        app:layout_constraintEnd_toStartOf="@id/iv_search"
+        app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:contentDescription="@string/more_button"
+        android:src="@drawable/ic_more"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatar_circle"
+        android:layout_width="@dimen/size_15x"
+        android:layout_height="@dimen/size_15x"
+        android:layout_marginStart="@dimen/size_4x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginBottom="@dimen/size_5x"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:layout_constraintBottom_toBottomOf="@id/app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_back"
+        app:shapeAppearance="@style/RoundedImageView" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatar_rectangle"
+        android:layout_width="@dimen/size_15x"
+        android:layout_height="@dimen/size_15x"
+        android:layout_marginStart="@dimen/size_4x"
+        android:layout_marginTop="@dimen/size_5x"
+        android:layout_marginBottom="@dimen/size_5x"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_back"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/name_and_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_5x"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_circle"
+        app:layout_constraintStart_toEndOf="@id/avatar_circle"
+        app:layout_constraintTop_toTopOf="@id/avatar_circle">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/light"
+            android:textSize="@dimen/text_size_10x"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            android:textColor="@color/light"
+            android:textSize="@dimen/text_size_7x"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:backgroundTint="@color/blue"
+        android:contentDescription="@string/edit_photo"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@id/app_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_grey"
+        android:padding="@dimen/size_5x"
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+        <TextView
+            android:id="@+id/tv_account"
+            style="@style/HeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_phone_num"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:text="@string/phone_num"
+            app:layout_constraintTop_toBottomOf="@id/tv_account" />
+
+        <TextView
+            android:id="@+id/tv_change_num"
+            style="@style/Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1x"
+            android:text="@string/change_num"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_num" />
+
+        <TextView
+            android:id="@+id/tv_username_value"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:text="@string/devsadeq"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_num" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            style="@style/Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1x"
+            android:text="@string/username"
+            app:layout_constraintTop_toBottomOf="@id/tv_username_value" />
+
+        <TextView
+            android:id="@+id/tv_bio_value"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:text="@string/android_developer"
+            app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_bio"
+            style="@style/Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1x"
+            android:text="@string/bio"
+            app:layout_constraintTop_toBottomOf="@id/tv_bio_value" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_3x"
+        android:background="@color/dark_grey"
+        android:padding="@dimen/size_5x"
+        app:layout_constraintTop_toBottomOf="@id/account_section">
+
+        <TextView
+            android:id="@+id/settings"
+            style="@style/HeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:layout_marginEnd="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_bell"
+            app:layout_constraintStart_toStartOf="@id/settings"
+            app:layout_constraintTop_toBottomOf="@id/settings" />
+
+        <ImageView
+            android:id="@+id/iv_privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_notifications" />
+
+        <ImageView
+            android:id="@+id/iv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_data"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_privacy" />
+
+        <ImageView
+            android:id="@+id/iv_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_chat"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_data" />
+
+        <ImageView
+            android:id="@+id/iv_folders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_folder"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_chat" />
+
+        <ImageView
+            android:id="@+id/iv_devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_devices"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_folders" />
+
+        <ImageView
+            android:id="@+id/iv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_language"
+            app:layout_constraintEnd_toEndOf="@id/iv_notifications"
+            app:layout_constraintStart_toStartOf="@id/iv_notifications"
+            app:layout_constraintTop_toBottomOf="@id/iv_devices" />
+
+
+        <TextView
+            android:id="@+id/tv_notifications"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/notifications_and_sounds"
+            app:layout_constraintBottom_toBottomOf="@id/iv_notifications"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_notifications"
+            app:layout_constraintTop_toTopOf="@id/iv_notifications" />
+
+        <TextView
+            android:id="@+id/tv_privacy"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/privacy_and_security"
+            app:layout_constraintBottom_toBottomOf="@id/iv_privacy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_privacy"
+            app:layout_constraintTop_toTopOf="@id/iv_privacy" />
+
+        <TextView
+            android:id="@+id/tv_data"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/data_and_storage"
+            app:layout_constraintBottom_toBottomOf="@id/iv_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_data"
+            app:layout_constraintTop_toTopOf="@id/iv_data" />
+
+        <TextView
+            android:id="@+id/tv_chat"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/chat_settings"
+            app:layout_constraintBottom_toBottomOf="@id/iv_chat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_chat"
+            app:layout_constraintTop_toTopOf="@id/iv_chat" />
+
+        <TextView
+            android:id="@+id/tv_folders"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/folders"
+            app:layout_constraintBottom_toBottomOf="@id/iv_folders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_folders"
+            app:layout_constraintTop_toTopOf="@id/iv_folders" />
+
+        <TextView
+            android:id="@+id/tv_devices"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/devices"
+            app:layout_constraintBottom_toBottomOf="@id/iv_devices"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_devices"
+            app:layout_constraintTop_toTopOf="@id/iv_devices" />
+
+        <TextView
+            android:id="@+id/tv_language"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/language"
+            app:layout_constraintBottom_toBottomOf="@id/iv_language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_language"
+            app:layout_constraintTop_toTopOf="@id/iv_language" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/help_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_3x"
+        android:background="@color/dark_grey"
+        android:padding="@dimen/size_5x"
+        app:layout_constraintTop_toBottomOf="@id/settings_section">
+
+        <TextView
+            android:id="@+id/help"
+            style="@style/HeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_ask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:layout_marginEnd="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_ask"
+            app:layout_constraintStart_toStartOf="@id/help"
+            app:layout_constraintTop_toBottomOf="@id/help" />
+
+        <ImageView
+            android:id="@+id/iv_faq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_faq"
+            app:layout_constraintEnd_toEndOf="@id/iv_ask"
+            app:layout_constraintStart_toStartOf="@id/iv_ask"
+            app:layout_constraintTop_toBottomOf="@id/iv_ask" />
+
+        <ImageView
+            android:id="@+id/iv_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5x"
+            android:contentDescription="@string/icon"
+            android:src="@drawable/ic_sheild"
+            app:layout_constraintEnd_toEndOf="@id/iv_ask"
+            app:layout_constraintStart_toStartOf="@id/iv_ask"
+            app:layout_constraintTop_toBottomOf="@id/iv_faq" />
+
+        <TextView
+            android:id="@+id/tv_ask"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/ask_a_question"
+            app:layout_constraintBottom_toBottomOf="@id/iv_ask"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_ask"
+            app:layout_constraintTop_toTopOf="@id/iv_ask" />
+
+        <TextView
+            android:id="@+id/tv_faq"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/telegram_faq"
+            app:layout_constraintBottom_toBottomOf="@id/iv_faq"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_faq"
+            app:layout_constraintTop_toTopOf="@id/iv_faq" />
+
+        <TextView
+            android:id="@+id/tv_policy"
+            style="@style/TitleText"
+            android:layout_width="@dimen/size_0x"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5x"
+            android:text="@string/privacy_policy"
+            app:layout_constraintBottom_toBottomOf="@id/iv_policy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_policy"
+            app:layout_constraintTop_toTopOf="@id/iv_policy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
